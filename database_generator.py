@@ -62,10 +62,6 @@ class BooksGenerator():
         self.conn.commit()
 
 
-    def close_connection(self):
-        self.conn.close()
-
-
     def populate_authors(self):
         authors = [generate_random_author() for _ in range(500)]
         query = """
@@ -87,3 +83,7 @@ class BooksGenerator():
         
         self.cursor.executemany(query, books)
         self.conn.commit()
+
+
+    def close_connection(self):
+        self.conn.close()
