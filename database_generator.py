@@ -62,27 +62,47 @@ class BooksGenerator():
         self.conn.commit()
 
 
+    def is_table_empty(self, table_name):
+        query = f"SELECT COUNT(*) FROM {table_name};"
+        self.cursor.execute(query)
+        count = self.cursor.fetchone()[0]
+        return count == 0
+
+
     def populate_authors(self):
-        authors = [generate_random_author() for _ in range(500)]
-        query = """
-            INSERT INTO author (name, surname, from_location, born_date)
-            VALUES (?, ?, ?, ?);
-            """ 
-        
-        self.cursor.executemany(query, authors)
-        self.conn.commit()
+        if self.is_table_empty('author'):
+
+            authors = [generate_random_author() for _ in range(500)]
+            query = """
+                INSERT INTO author (name, surname, from_location, born_date)
+                VALUES (?, ?, ?, ?);
+                """ 
+
+            self.cursor.executemany(query, authors)
+            self.conn.commit()
+
+        else:
+
+            print("Author table already contains data.")
+
         
     
     def populate_books(self):
-        author_info = fetch_existing_author_info(self.conn)
-        books = [generate_random_book(author_info) for _ in range(1000)]
-        query = """
-            INSERT INTO books (author_id, name, category, pages, release_date)
-            VALUES (?, ?, ?, ?, ?);
-            """ 
-        
-        self.cursor.executemany(query, books)
-        self.conn.commit()
+        if self.is_table_empty('books'):
+
+            author_info = fetch_existing_author_info(self.conn)
+            books = [generate_random_book(author_info) for _ in range(1000)]
+            query = """
+                INSERT INTO books (author_id, name, category, pages, release_date)
+                VALUES (?, ?, ?, ?, ?);
+                """ 
+
+            self.cursor.executemany(query, books)
+            self.conn.commit()
+
+        else:
+            print("Books table already contains data.")
+
 
 
     def close_connection(self):
