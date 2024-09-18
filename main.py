@@ -4,6 +4,8 @@ from database_collector import DatabaseCollector
 
 def main():
     db = BooksGenerator.create()
+    db.drop_table('author')
+    db.drop_table('books')
     db.create_authors_table()
     db.create_books_table()
     db.populate_authors()
@@ -18,6 +20,8 @@ def main():
     print("Authors without books:", db_collector.authors_without_books())
     print("Authors with more then five books:", db_collector.authors_with_more_than_five_books())
     db_collector.close_connection()
+    
+
     
 
 

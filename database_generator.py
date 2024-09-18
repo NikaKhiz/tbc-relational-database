@@ -68,6 +68,10 @@ class BooksGenerator():
         count = self.cursor.fetchone()[0]
         return count == 0
 
+    def drop_table(self,table_name):
+        query = f'DROP TABLE IF EXISTS {table_name}'
+        self.cursor.execute(query)
+
 
     def populate_authors(self):
         if self.is_table_empty('author'):
