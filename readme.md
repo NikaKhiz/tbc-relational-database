@@ -42,17 +42,7 @@
 git clone https://github.com/NikaKhiz/tbc-relational-database.git
 ```
 
-2\. Then after you will need to install all of the dependencies included in requirements.txt file:
-
-<p>
-for that run the following commands in a root directory from your terminal:
-</p>
-
-```sh
-pip install -r requirements.txt
-```
-
-3\. your operating system may be using different versions of python interpreter , so first check the version:
+2\. your operating system may be using different versions of python interpreter , so first check the version:
 
 ```sh
 python --version
@@ -64,7 +54,42 @@ or
 python3 --version
 ```
 
-4\. After that in the root directory, you can run command from the terminal:
+3\. Generally its a good practice to work in virtual environment to avoid comflicts.
+
+<p>to create virtual environment and activate it, run following commands in a root dir: 
+</p>
+
+```sh
+python -m venv venv
+source venv/bin/activate
+```
+
+or
+
+```sh
+python3 -m venv venv
+source venv/bin/activate
+```
+
+<p>these commands will create virtual environment named venv and will activate it</p>
+
+<p>if you want to deactivate virtual environment, simply run this command in terminal:</p>
+
+```sh
+deactivate
+```
+
+4\. Then after you will need to install all of the dependencies included in requirements.txt file:
+
+<p>
+for that run the following commands in a root directory from your terminal:
+</p>
+
+```sh
+pip install -r requirements.txt
+```
+
+5\. After that in the root directory, you can run command from the terminal:
 
 ```sh
 python main.py
@@ -73,7 +98,7 @@ python main.py
 or
 
 ```sh
-python main.py
+python3 main.py
 ```
 
 ### this command runs the script, populates db, and display the results!
