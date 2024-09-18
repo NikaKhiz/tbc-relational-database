@@ -1,7 +1,7 @@
 import sqlite3 as sqlite
 from utils import * 
 
-class BooksGenerator():
+class DatabaseGenerator():
     def __init__(self, conn, cursor) -> None:
         self.conn = conn
         self.cursor = cursor

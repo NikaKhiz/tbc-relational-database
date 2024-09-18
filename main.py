@@ -1,9 +1,9 @@
-from database_generator import BooksGenerator 
+from database_generator import DatabaseGenerator 
 from database_collector import DatabaseCollector 
 
 
 def main():
-    db = BooksGenerator.create()
+    db = DatabaseGenerator.create()
     db.drop_table('author')
     db.drop_table('books')
     db.create_authors_table()

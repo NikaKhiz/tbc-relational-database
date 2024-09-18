@@ -1,10 +1,10 @@
-# Books Generator
+# Books and Authors Generator
 
-<p>Tbc books generator creates authors and books tables and populates them with fake data in sqlite db.
+<p>Tbc database generator creates authors and books tables and populates them with fake data in sqlite db.
 </p>
 <p>When we run script, already existed tables are being droped, recreated and repopulated then after.</p>
 
-<p>Then database collector fetches information from db and show us following results:</p>
+<p>Then after database collector fetches information from db and show us following results:</p>
 
 <ul>
     <li>books that have most of the pages.</li>
