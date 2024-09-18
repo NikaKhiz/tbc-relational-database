@@ -1,9 +1,9 @@
 # Books and Authors Generator
 
-<p>Tbc database generator creates authors and books tables and populates them with fake data in sqlite db.
+<p>Tbc relational database is a repository that has two main modules, database generator and collector.
 </p>
+<p>Database generator creates authors and books tables and populates them with fake data in sqlite db.</p>
 <p>When we run script, already existed tables are being droped, recreated and repopulated then after.</p>
-
 <p>Then after database collector fetches information from db and show us following results:</p>
 
 <ul>
