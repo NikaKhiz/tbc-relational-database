@@ -61,15 +61,15 @@ class DatabaseCollector():
 
     def youngest_authors(self):
         youngest_date_query = """
-            SELECT MAX(born_date) FROM author;
+            SELECT MAX(birth_date) FROM author;
         """
         self.cursor.execute(youngest_date_query)
         youngest_date = self.cursor.fetchone()[0]
 
         query = """
-            SELECT name, surname, born_date
+            SELECT name, surname, birth_date
             FROM author
-            WHERE born_date = ?;
+            WHERE birth_date = ?;
         """
         self.cursor.execute(query, (youngest_date,))
 

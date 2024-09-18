@@ -37,7 +37,7 @@ class BooksGenerator():
                 name TEXT NOT NULL,
                 surname TEXT NOT NULL,
                 from_location TEXT NOT NULL,
-                born_date TEXT NOT NULL
+                birth_date TEXT NOT NULL
             );
             """
         
@@ -78,7 +78,7 @@ class BooksGenerator():
 
             authors = [generate_random_author() for _ in range(500)]
             query = """
-                INSERT INTO author (name, surname, from_location, born_date)
+                INSERT INTO author (name, surname, from_location, birth_date)
                 VALUES (?, ?, ?, ?);
                 """ 
 
