@@ -59,5 +59,22 @@ class DatabaseCollector():
         return round(self.cursor.fetchone()[0], 2)
 
 
+    def youngest_authors(self):
+        youngest_date_query = """
+            SELECT MAX(born_date) FROM author;
+        """
+        self.cursor.execute(youngest_date_query)
+        youngest_date = self.cursor.fetchone()[0]
+
+        query = """
+            SELECT name, surname, born_date
+            FROM author
+            WHERE born_date = ?;
+        """
+        self.cursor.execute(query, (youngest_date,))
+
+        return json.dumps(self.cursor.fetchall(), indent=4)  
+
+
     def close_connection(self):
         self.conn.close()
