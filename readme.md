@@ -18,6 +18,7 @@
 
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
 
 #
 
@@ -75,4 +76,19 @@ or
 python main.py
 ```
 
-### this command runs the script and will generate json file with fetched data!
+### this command runs the script, populates db, and display the results!
+
+### Project Structure
+
+```bash
+├─── readme
+│   ├─── assets
+- .gitignore
+- books.db
+- database_collector.py
+- database_generator.py
+- main.py
+- readme.md
+- requirements.txt
+- utils.py
+```
