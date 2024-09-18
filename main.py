@@ -1,7 +1,10 @@
-import sqlite3 as sqlite
+from database_generator import BooksGenerator 
+
 
 def main():
-    conn = sqlite.connect('books.db')
+    db = BooksGenerator.create()
+
+    
 
 
 if __name__ == '__main__':
