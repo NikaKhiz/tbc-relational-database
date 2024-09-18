@@ -76,5 +76,15 @@ class DatabaseCollector():
         return json.dumps(self.cursor.fetchall(), indent=4)  
 
 
+    def authors_without_books(self):
+        query = """
+            SELECT id, name, surname
+            FROM author
+            WHERE id NOT IN (SELECT author_id FROM books);
+        """
+        self.cursor.execute(query)
+        return json.dumps(self.cursor.fetchall(), indent=4)  
+    
+
     def close_connection(self):
         self.conn.close()
