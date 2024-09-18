@@ -28,3 +28,38 @@ class BooksGenerator():
 
         return cls(conn, cursor)
     
+                
+    def create_authors_table(self):
+        query = """
+            CREATE TABLE IF NOT EXISTS author (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                surname TEXT NOT NULL,
+                from_location TEXT NOT NULL,
+                born_date TEXT NOT NULL
+            );
+                """
+        
+        self.cursor.execute(query)
+        self.conn.commit()
+
+
+    def create_books_table(self):
+        query = """
+            CREATE TABLE IF NOT EXISTS books (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                author_id INTEGER,
+                name TEXT NOT NULL,
+                category TEXT NOT NULL,
+                pages INTEGER NOT NULL,
+                release_date TEXT NOT NULL,
+                FOREIGN KEY (author_id) REFERENCES author(id) ON DELETE CASCADE
+            );
+                """
+        
+        self.cursor.execute(query)
+        self.conn.commit()
+
+
+    def close_connection(self):
+        self.conn.close()
