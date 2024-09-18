@@ -51,5 +51,13 @@ class DatabaseCollector():
         return json.dumps(self.cursor.fetchall(), indent=4)
 
 
+    def average_pages_count(self):
+        query = """
+            SELECT AVG(pages) FROM books;
+            """
+        self.cursor.execute(query)
+        return round(self.cursor.fetchone()[0], 2)
+
+
     def close_connection(self):
         self.conn.close()

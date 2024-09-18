@@ -13,6 +13,7 @@ def main():
 
     db_collector = DatabaseCollector.create()
     print("Book with the most pages:", db_collector.books_with_most_pages())
+    print("Average number of pages:", db_collector.average_pages_count())
     db_collector.close_connection()
     
 
