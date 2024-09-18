@@ -1,4 +1,5 @@
 from database_generator import BooksGenerator 
+from database_collector import DatabaseCollector 
 
 
 def main():
@@ -10,6 +11,9 @@ def main():
     db.close_connection()
 
 
+    db_collector = DatabaseCollector.create()
+    print("Book with the most pages:", db_collector.books_with_most_pages())
+    db_collector.close_connection()
     
 
 
