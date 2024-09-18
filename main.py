@@ -18,7 +18,7 @@ def main():
     print("Average number of pages:", db_collector.average_pages_count())
     print("Youngest author:", db_collector.youngest_authors())
     print("Authors without books:", db_collector.authors_without_books())
-    print("Authors with more then five books:", db_collector.authors_with_more_than_five_books())
+    print("Authors with more then three book:", db_collector.authors_with_more_then_three_book())
     db_collector.close_connection()
     
 

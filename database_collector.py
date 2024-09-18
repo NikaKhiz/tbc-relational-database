@@ -86,13 +86,14 @@ class DatabaseCollector():
         return json.dumps(self.cursor.fetchall(), indent=4)  
     
 
-    def authors_with_more_than_five_books(self):
+    def authors_with_more_then_three_book(self):
        query = """
            SELECT a.name, a.surname, COUNT(b.id) as book_count
            FROM author a
            INNER JOIN books b ON a.id = b.author_id
            GROUP BY a.name, a.surname
-           HAVING COUNT(b.id) > 5;
+           HAVING COUNT(b.id) > 3
+           LIMIT 5;
        """
        self.cursor.execute(query)
        return json.dumps(self.cursor.fetchall(), indent=4)  
