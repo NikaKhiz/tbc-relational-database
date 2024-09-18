@@ -1,4 +1,5 @@
 import sqlite3 as sqlite
+from utils import * 
 
 class BooksGenerator():
     def __init__(self, conn, cursor) -> None:
@@ -38,7 +39,7 @@ class BooksGenerator():
                 from_location TEXT NOT NULL,
                 born_date TEXT NOT NULL
             );
-                """
+            """
         
         self.cursor.execute(query)
         self.conn.commit()
@@ -55,7 +56,7 @@ class BooksGenerator():
                 release_date TEXT NOT NULL,
                 FOREIGN KEY (author_id) REFERENCES author(id) ON DELETE CASCADE
             );
-                """
+            """
         
         self.cursor.execute(query)
         self.conn.commit()
@@ -63,3 +64,26 @@ class BooksGenerator():
 
     def close_connection(self):
         self.conn.close()
+
+
+    def populate_authors(self):
+        authors = [generate_random_author() for _ in range(500)]
+        query = """
+            INSERT INTO author (name, surname, from_location, born_date)
+            VALUES (?, ?, ?, ?);
+            """ 
+        
+        self.cursor.executemany(query, authors)
+        self.conn.commit()
+        
+    
+    def populate_books(self):
+        author_info = fetch_existing_author_info(self.conn)
+        books = [generate_random_book(author_info) for _ in range(1000)]
+        query = """
+            INSERT INTO books (author_id, name, category, pages, release_date)
+            VALUES (?, ?, ?, ?, ?);
+            """ 
+        
+        self.cursor.executemany(query, books)
+        self.conn.commit()
